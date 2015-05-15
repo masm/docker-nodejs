@@ -3,4 +3,6 @@ MAINTAINER Marco Monteiro <marco@neniu.org>
 
 ENTRYPOINT ["/usr/bin/node"]
 
-RUN pacman -S nodejs --needed --noconfirm --noprogressbar
+RUN pacman -Sq nodejs npm --needed --noconfirm --noprogressbar && \
+    yes | pacman -Sqcc && \
+    rm -rf /usr/share/man/*
